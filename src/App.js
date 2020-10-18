@@ -48,19 +48,7 @@ function App() {
       setConversations(newConversations);
       localStorage.setItem("conversations", JSON.stringify(newConversations));
       setIsModalVisible(false);
-
-      // Simulate a message response from the user after 1-60s.
-      setTimeout(() => {
-        const date = new Date();
-        let message = "Greetings, fellow human being."
-        let copyNewConversations = [...newConversations];
-        copyNewConversations.find(c => c.id === id).messages.push({message: message, name: api.getFirstLastInitial(users[0].name), timestamp: `Today at ${date.getHours()}:${date.getMinutes()}`});
-        setConversations(copyNewConversations);
-        localStorage.setItem("conversations", JSON.stringify(copyNewConversations));
-      }, faker.random.number({
-        'min': 1000,
-        'max': 60000
-      }))
+      automatedResponse(newConversations, id);
     }
   }
 
@@ -71,6 +59,27 @@ function App() {
     results.messages.push({ message: message, name: api.getFirstLastInitial('Lucas Padden'), timestamp: `Today at ${date.getHours()}:${date.getMinutes()}`});
     setConversations(conversationsCopy);
     localStorage.setItem("conversations", JSON.stringify(conversationsCopy));
+    automatedResponse(conversationsCopy, cid);
+  }
+
+  const automatedResponse = (newConversations, id) => {
+    // Simulate a message response from the user after 1-60s.
+    setTimeout(() => {
+      const date = new Date();
+      let message = "Greetings, fellow human being."
+      let copyNewConversations = [...newConversations];
+      const currentConvo = copyNewConversations.find(c => c.id === id);
+      currentConvo.messages.push({
+        message: message, 
+        name: api.getFirstLastInitial(currentConvo.recipients[0].name), 
+        timestamp: `Today at ${date.getHours()}:${date.getMinutes()}`
+      });
+      setConversations(copyNewConversations);
+      localStorage.setItem("conversations", JSON.stringify(copyNewConversations));
+    }, faker.random.number({
+      'min': 1000,
+      'max': 60000
+    }))
   }
 
 
