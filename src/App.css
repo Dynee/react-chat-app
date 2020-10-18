@@ -1,38 +1,57 @@
 .App {
-  text-align: center;
+  display: grid;
+  grid-template-columns: 320px 500px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.conversationList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.conversation {
+  background-color: #eee;
+  width: 319px;
+  height: 100px;
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 150px 170px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.avatar {
+  grid-column: 1;
+  grid-row: 1 / 2;
+  height: 70px;
+  border-radius: 50px;
+  margin: auto;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.conversationPreview {
+  display: grid;
+  grid-template-rows: 50px 50px;
+  align-items: center;
+  justify-content: start;
+}
+
+.displayName, .displayText {
+  margin: 0;
+}
+
+.newConvoBtn {
+  grid-column: 1;
+  margin: 0;
+  padding: 5px;
+}
+
+.messageBlue {
+  background-color: #a5bee6;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.messageGreen {
+  background-color: #8ccf8e;
+  border: 1px solid #eee;
+  border-radius: 5px;
 }
