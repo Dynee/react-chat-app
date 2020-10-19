@@ -25,15 +25,12 @@ import { nanoid } from 'nanoid';
 import * as faker from 'faker';
 
 export default function App() {
-  const initialChats = () => JSON.parse(localStorage.getItem("conversations")) || [];
+  const initialChats = () => JSON.parse(localStorage.getItem("conversations")) || api.fetchChats();
   const [chats, setChats] = useState(initialChats);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setChats(api.fetchChats());
-  }, [])
-
-  useEffect(() => {
+    console.log('running!');
     localStorage.setItem("conversations", JSON.stringify(chats));
   }, [chats]);
 
