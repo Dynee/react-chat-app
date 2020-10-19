@@ -51,6 +51,7 @@ export default function App() {
     copiedChats.push(newChat);
     setChats(copiedChats);
     setOpen(false);
+    sendAutomatedMessage(newChat, message);
   }
 
   const handleModal = () => {
@@ -67,11 +68,11 @@ export default function App() {
   }
 
   const sendAutomatedMessage = (chat) => {
-    console.log(chat.id);
     setTimeout(() => {
-      const copiedChats = [...chats];
+      // at this point, the state is not actually updated but localstorage is so we get
+      // the data from localstorage instead
+      const copiedChats = [...JSON.parse(localStorage.getItem("conversations"))];
       const currentChat = copiedChats.find(c => c.id === chat.id);
-      console.log(currentChat);
       // make the 2nd person recieving the message respond (i.e not the current)
       const newMessage = { id: nanoid(), text: "Hey What's up!!", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
       currentChat.messages.push(newMessage);
