@@ -78,7 +78,7 @@ export default function App() {
       currentChat.messages.push(newMessage);
       setChats(copiedChats);
       // happen a random time between 1-60s
-    }, faker.random.number({ min: 1000, max: 6000 }))
+    }, faker.random.number({ min: 1000, max: 60000 }))
   }
 
   return (
