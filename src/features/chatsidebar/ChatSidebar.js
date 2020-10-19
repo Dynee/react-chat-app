@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 
 export const ChatSidebar = ({ chats, handleModal }) => (
     <div>
-        <List style={{overflow: "auto", height: "650px"}}>
+        <List style={{ scrollTop: "650px", overflow: "auto", height: "650px"}}>
             <Paper>
                 {chats.map((chat, index) => (
                     <Link style={{textDecoration: "none"}}to={`/c/${chat.id}`} key={index}>

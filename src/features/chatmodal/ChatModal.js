@@ -24,6 +24,7 @@ export const ChatModal = ({ users, open, handleClose }) => {
             handleClose(selectedUsers, message);
             setMessage('');
             setSelectedUsers([]);
+            setChecked([]);
         }
     }
 
