@@ -52,6 +52,14 @@ export default function App() {
     setOpen(true);
   }
 
+  const sendChatMessage = (chat, message) => {
+    const copiedChats = [...chats];
+    const currentChat = copiedChats.find(c => c.id === chat.id);
+    const newMessage = { id: nanoid(), text: message, sentAt: faker.time.recent(), sentBy: api.currentUser };
+    currentChat.messages.push(newMessage);
+    setChats(copiedChats);
+  }
+
   return (
     <Router>
       <ChatWindow>
@@ -59,7 +67,7 @@ export default function App() {
           <ChatSidebar chats={chats} handleModal={handleModal}/>
         </Grid>
         <Grid xs={8} spacing={2}>
-          <Route path="/c/:cid" render={(props) => <ChatHeader {...props} chats={chats}/>}/>
+          <Route path="/c/:cid" render={(props) => <ChatHeader {...props} chats={chats} handleChatMessage={sendChatMessage}/>}/>
         </Grid>
         <ChatModal open={open} users={api.users} handleClose={addNewChatHandler}/>
       </ChatWindow>
