@@ -81,10 +81,10 @@ export default function App() {
   return (
     <Router>
       <ChatWindow>
-        <Grid xs={4} spacing={2}>
+        <Grid item xs={4}>
           <ChatSidebar chats={chats} handleModal={handleModal}/>
         </Grid>
-        <Grid xs={8} spacing={2}>
+        <Grid item xs={8}>
           <Route path="/c/:cid" render={(props) => <ChatHeader {...props} chats={chats} handleChatMessage={sendChatMessage}/>}/>
         </Grid>
         <ChatModal open={open} users={api.users} handleClose={addNewChatHandler}/>

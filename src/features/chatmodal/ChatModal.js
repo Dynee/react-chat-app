@@ -45,7 +45,7 @@ export const ChatModal = ({ users, open, handleClose }) => {
             <DialogTitle id="simple-dialog-title">Select A User to Start a Conversation With</DialogTitle>
             <List dense>
                 {users.map((user, index) => (
-                    <ListItem>
+                    <ListItem key={index}>
                         <ListItemAvatar>
                             <Avatar src={user}/>
                         </ListItemAvatar>
