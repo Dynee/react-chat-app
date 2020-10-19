@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
@@ -9,11 +9,16 @@ import { api } from '../../api/api';
 export const ChatMessage = ({ message }) => {
     const [first, last] = message.sentBy.split(' ');
     const displayName = `${first.substring(0, 1) + last.substring(0, 1)}`
-    console.log(displayName);
     const d = new Date(message.sentAt);
+    const itemRef = useRef(null);
+
+    useEffect(() => {
+        itemRef.current.scrollIntoView();
+    }, [])
+
     return (
         <React.Fragment>
-            <ListItem style={message.sentBy === api.currentUser ? {backgroundColor: "#addbb6"} : {backgroundColor: "#aebce6"}}>
+            <ListItem ref={itemRef} style={message.sentBy === api.currentUser ? {backgroundColor: "#addbb6"} : {backgroundColor: "#aebce6"}}>
                 <ListItemAvatar>
                     <Avatar>{displayName}</Avatar>
                 </ListItemAvatar>

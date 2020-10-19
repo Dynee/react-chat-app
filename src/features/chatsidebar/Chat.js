@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RecentChatMessage } from './RecentChatMessage';
 import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
@@ -12,9 +12,15 @@ export const Chat = ({ chat }) => {
     const [_, next] = chat.recipients;
     const [firstName, lastName] = next.split(' ');
     const displayString = `${firstName} ${lastName.substring(0, 1)}`;
+    const itemRef = useRef(null);
+
+    useEffect(() => {
+        itemRef.current.scrollIntoView();
+    }, [])
+    
     return (
         <Paper>
-        <ListItem>
+        <ListItem ref={itemRef}>
             <ListItemAvatar>
                 <Avatar src={chat.avatar} alt={chat.alt}/>
             </ListItemAvatar>
