@@ -30,7 +30,6 @@ export default function App() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    console.log('running!');
     localStorage.setItem("conversations", JSON.stringify(chats));
   }, [chats]);
 
