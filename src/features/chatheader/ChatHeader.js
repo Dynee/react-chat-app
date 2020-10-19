@@ -11,7 +11,7 @@ export const ChatHeader = ({ match, chats, handleChatMessage }) => {
     const currentChat = chats.find(chat => chat.id === match.params.cid);
     return (
         <Grid container direction="column">
-            <Paper>
+            <Paper style={{height: "700px"}}>
                 <Grid container direction="row">
                     <ListItem>
                         <RecipientsList showAvatar recipients={currentChat.recipients} />
