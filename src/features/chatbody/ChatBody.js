@@ -30,7 +30,7 @@ export const ChatBody = ({ chat, handleChatMessage }) => {
             </List>
             <Grid container direction="row">
                 <Grid item xs={10}>
-                    <TextField id="outline-basic" size="small" fullWidth variant="outlined" value={message}/>
+                    <TextField onChange={handleChange} id="outline-basic" size="small" fullWidth variant="outlined" value={message}/>
                 </Grid>
                 <Grid item xs={2}>
                     <Button fullWidth onClick={() => handleClickChange(chat, message)} variant="contained" color="primary">Send</Button>

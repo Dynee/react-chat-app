@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+// styles
+import { useStyles } from './styles/Styles';
+
 // api
 import { api } from './api/api';
 
@@ -25,6 +28,7 @@ import { nanoid } from 'nanoid';
 import * as faker from 'faker';
 
 export default function App() {
+  const classes = useStyles();
   const initialChats = () => JSON.parse(localStorage.getItem("conversations")) || api.fetchChats();
   const [chats, setChats] = useState(initialChats);
   const [open, setOpen] = useState(false);
@@ -40,7 +44,7 @@ export default function App() {
       messages: [
           { id: nanoid(), text: message, sentAt: faker.time.recent(), sentBy: api.currentUser },
       ],
-      recipients: users,
+      recipients: [api.currentUser, ...users],
       avatar: faker.image.avatar(),
       alt: "G"
     } 
@@ -63,20 +67,22 @@ export default function App() {
   }
 
   const sendAutomatedMessage = (chat) => {
+    console.log(chat.id);
     setTimeout(() => {
       const copiedChats = [...chats];
       const currentChat = copiedChats.find(c => c.id === chat.id);
+      console.log(currentChat);
       // make the 2nd person recieving the message respond (i.e not the current)
       const newMessage = { id: nanoid(), text: "Hey What's up!!", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
       currentChat.messages.push(newMessage);
       setChats(copiedChats);
       // happen a random time between 1-60s
-    }, faker.random.number({ min: 1000, max: 60000 }))
+    }, faker.random.number({ min: 1000, max: 6000 }))
   }
 
   return (
     <Router>
-      <ChatWindow>
+      <ChatWindow classes={classes}>
         <Grid item xs={2}>
           <ChatSidebar chats={chats} handleModal={handleModal}/>
         </Grid>
