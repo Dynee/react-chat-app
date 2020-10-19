@@ -58,6 +58,19 @@ export default function App() {
     const newMessage = { id: nanoid(), text: message, sentAt: faker.time.recent(), sentBy: api.currentUser };
     currentChat.messages.push(newMessage);
     setChats(copiedChats);
+    sendAutomatedMessage(chat);
+  }
+
+  const sendAutomatedMessage = (chat) => {
+    setTimeout(() => {
+      const copiedChats = [...chats];
+      const currentChat = copiedChats.find(c => c.id === chat.id);
+      // make the 2nd person recieving the message respond (i.e not the current user)
+      const newMessage = { id: nanoid(), text: "Hey What's up!!", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
+      currentChat.messages.push(newMessage);
+      setChats(copiedChats);
+      // happen a random time between 1-60s
+    }, faker.random.number({ min: 1000, max: 60000 }))
   }
 
   return (
