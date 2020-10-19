@@ -20,9 +20,11 @@ export const ChatModal = ({ users, open, handleClose }) => {
     }
 
     const onCloseHandler = (selectedUsers, message) => {
-        handleClose(selectedUsers, message);
-        setMessage('');
-        setSelectedUsers([]);
+        if (selectedUsers && message) {
+            handleClose(selectedUsers, message);
+            setMessage('');
+            setSelectedUsers([]);
+        }
     }
 
     const handleToggle = value => () => {
