@@ -17,23 +17,23 @@ export const Chat = ({ chat }) => {
     useEffect(() => {
         itemRef.current.scrollIntoView();
     }, [])
-    
+
     return (
         <Paper>
-        <ListItem ref={itemRef}>
-            <ListItemAvatar>
-                <Avatar src={chat.avatar} alt={chat.alt}/>
-            </ListItemAvatar>
-            <Grid container direction="column" alignItems="center">
-                <ListItemText 
-                    primary={<React.Fragment>{displayString}</React.Fragment>}
-                />
-                <ListItemText 
-                    primary={<RecentChatMessage messages={chat.messages}/>}
-                />
-            </Grid>
-        </ListItem>
-        <Divider light/>
-    </Paper>
+            <ListItem ref={itemRef}>
+                <ListItemAvatar>
+                    <Avatar src={chat.avatar} alt={chat.alt}/>
+                </ListItemAvatar>
+                <Grid container direction="column" alignItems="center">
+                    <ListItemText 
+                        primary={<React.Fragment>{displayString}</React.Fragment>}
+                    />
+                    <ListItemText 
+                        primary={<RecentChatMessage messages={chat.messages}/>}
+                    />
+                </Grid>
+            </ListItem>
+            <Divider light/>
+        </Paper>
     )
 }
