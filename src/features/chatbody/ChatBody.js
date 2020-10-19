@@ -28,7 +28,7 @@ export const ChatBody = ({ chat, handleChatMessage }) => {
                     />
                 ))}
             </List>
-            <Grid container direction="row">
+            <Grid style={{padding: "20px"}} container direction="row">
                 <Grid item xs={10}>
                     <TextField onChange={handleChange} id="outline-basic" size="small" fullWidth variant="outlined" value={message}/>
                 </Grid>

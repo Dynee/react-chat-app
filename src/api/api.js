@@ -38,7 +38,7 @@ export const api = {
           { id: nanoid(), text: faker.lorem.text(), sentAt: faker.time.recent(), sentBy: "Jill Doe" },
           { id: nanoid(), text: faker.lorem.text(), sentAt: faker.time.recent(), sentBy: "Jill Doe" },
         ],
-        recipients: [this.currentUser, "Jill"],
+        recipients: [this.currentUser, "Jill Doe"],
         avatar: faker.image.avatar(),
         alt: "G"
       },
@@ -50,7 +50,7 @@ export const api = {
           { id: nanoid(), text: faker.lorem.text(), sentAt: faker.time.recent(), sentBy: "Jim Doe" },
           { id: nanoid(), text: faker.lorem.text(), sentAt: faker.time.recent(), sentBy: "Jim Doe" },
         ],
-        recipients: [this.currentUser, "Jim"],
+        recipients: [this.currentUser, "Jim Doe"],
         avatar: faker.image.avatar(),
         alt: "G"
       },

@@ -7,7 +7,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 
 export const RecipientsList = ({ recipients, showAvatar }) => (
-    <List style={{"display": "inherit"}}>
+    <List style={{display: "flex", flexDirection: "row", padding: "0px"}}>
         {recipients.map((recipient, index) => {
             if (!(recipient === api.currentUser)) {
                 return (
