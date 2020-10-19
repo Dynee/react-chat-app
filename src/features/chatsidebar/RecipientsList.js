@@ -14,7 +14,7 @@ export const RecipientsList = ({ recipients, showAvatar }) => (
                     <ListItem key={index}>
                         {showAvatar ? (
                             <ListItemAvatar>
-                                <Avatar src={recipient} alt={recipient} />
+                                <Avatar alt={recipient} />
                             </ListItemAvatar>
                         ): null}
                         <ListItemText 

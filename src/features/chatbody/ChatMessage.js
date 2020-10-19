@@ -8,17 +8,18 @@ import { api } from '../../api/api';
 
 export const ChatMessage = ({ message }) => {
     const [first, last] = message.sentBy.split(' ');
-    const displayName = `${first + last.substring(0, 1)}`
+    const displayName = `${first.substring(0, 1) + last.substring(0, 1)}`
+    console.log(displayName);
     const d = new Date(message.sentAt);
     return (
         <React.Fragment>
             <ListItem style={message.sentBy === api.currentUser ? {backgroundColor: "#addbb6"} : {backgroundColor: "#aebce6"}}>
                 <ListItemAvatar>
-                    <Avatar src={displayName} alt={displayName}/>
+                    <Avatar>{displayName}</Avatar>
                 </ListItemAvatar>
                 <ListItemText 
                     primary={<React.Fragment>{message.text}</React.Fragment>}
-                    secondary={<React.Fragment>{`Today at ${d.getHours()}:${d.getMinutes()}`}</React.Fragment>}
+                    secondary={<React.Fragment>{`Today at ${d.getHours()}:${d.getMinutes() < 10 ? "0": ""}${d.getMinutes()}`}</React.Fragment>}
                 />
             </ListItem>
             <Divider light />
