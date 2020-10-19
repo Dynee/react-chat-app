@@ -74,7 +74,7 @@ export default function App() {
       const copiedChats = [...JSON.parse(localStorage.getItem("conversations"))];
       const currentChat = copiedChats.find(c => c.id === chat.id);
       // make the 2nd person recieving the message respond (i.e not the current)
-      const newMessage = { id: nanoid(), text: "Hey What's up!!", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
+      const newMessage = { id: nanoid(), text: "Greetings, fellow human being.", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
       currentChat.messages.push(newMessage);
       setChats(copiedChats);
       // happen a random time between 1-60s
