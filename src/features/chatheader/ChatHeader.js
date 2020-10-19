@@ -4,6 +4,7 @@ import { ChatBody } from '../chatbody/ChatBody';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
 
 export const ChatHeader = ({ match, chats, handleChatMessage }) => { 
     const currentChat = chats.find(chat => chat.id === match.params.cid);
@@ -15,6 +16,7 @@ export const ChatHeader = ({ match, chats, handleChatMessage }) => {
                         <RecipientsList showAvatar recipients={currentChat.recipients} />
                     </ListItem>
                 </Grid>
+                <Divider light />
                 <ChatBody handleChatMessage={handleChatMessage} chat={currentChat}/>
             </Paper>
         </Grid>

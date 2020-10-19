@@ -1,5 +1,4 @@
 import React from 'react';
-import { RecipientsList } from './RecipientsList';
 import { RecentChatMessage } from './RecentChatMessage';
 import Avatar from '@material-ui/core/Avatar';
 import ListItem from '@material-ui/core/ListItem';
@@ -7,6 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
 
 export const Chat = ({ chat }) => {
     const [_, next] = chat.recipients;
@@ -27,6 +27,7 @@ export const Chat = ({ chat }) => {
                 />
             </Grid>
         </ListItem>
+        <Divider light/>
     </Paper>
     )
 }
