@@ -12,7 +12,7 @@ export const Chat = ({ chat }) => (
         <Avatar src={chat.avatar} alt={chat.alt}/>
        </ListItemAvatar>
        <ListItemText 
-            primary={<RecipientsList recipients={chat.recipients}/>}
+            primary={<RecipientsList showAvatar={false} recipients={chat.recipients}/>}
             secondary={<RecentChatMessage messages={chat.messages} />}
        />
     </ListItem>

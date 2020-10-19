@@ -3,14 +3,20 @@ import { api } from '../../api/api';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
 
-// TODO: use context to grab the current user
-export const RecipientsList = ({ recipients }) => (
-    <List>
+export const RecipientsList = ({ recipients, showAvatar }) => (
+    <List style={{"display": "inherit"}}>
         {recipients.map((recipient, index) => {
             if (!(recipient === api.currentUser)) {
                 return (
                     <ListItem key={index}>
+                        {showAvatar ? (
+                            <ListItemAvatar>
+                                <Avatar src={recipient} alt={recipient} />
+                            </ListItemAvatar>
+                        ): null}
                         <ListItemText 
                             primary={recipient}
                         />

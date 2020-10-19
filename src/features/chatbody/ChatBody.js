@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ChatMessage } from './ChatMessage';
+import Grid from '@material-ui/core/Grid';
 
 export const ChatBody = ({ chat, handleChatMessage }) => {
     const [message, setMessage] = useState('');
@@ -15,7 +16,7 @@ export const ChatBody = ({ chat, handleChatMessage }) => {
     }
 
     return (
-        <div>
+        <Grid>
             {chat.messages.map((message, index) => (
                 <ChatMessage 
                     key={index}
@@ -24,6 +25,6 @@ export const ChatBody = ({ chat, handleChatMessage }) => {
             ))}
             <input onChange={handleChange} type="text" name="message" value={message}/>
             <button onClick={() => handleClickChange(chat, message)} type="button">Send</button>
-        </div>
+        </Grid>
     )
 }
