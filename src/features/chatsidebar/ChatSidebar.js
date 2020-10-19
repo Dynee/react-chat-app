@@ -1,10 +1,11 @@
 import React from 'react';
 import { Chat } from './Chat';
 import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
 
 export const ChatSidebar = ({ chats, handleModal }) => (
     <div>
-        <ul>
+        <List>
             {chats.map((chat, index) => (
                 <Link to={`/c/${chat.id}`}>
                     <Chat 
@@ -13,7 +14,7 @@ export const ChatSidebar = ({ chats, handleModal }) => (
                     />
                 </Link>
             ))}
-        </ul>
+        </List>
         <button onClick={handleModal} type="button">New Chat</button>
     </div>   
 )

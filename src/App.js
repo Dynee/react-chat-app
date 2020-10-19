@@ -25,12 +25,17 @@ import { nanoid } from 'nanoid';
 import * as faker from 'faker';
 
 export default function App() {
-  const [chats, setChats] = useState([]);
+  const initialChats = () => JSON.parse(localStorage.getItem("conversations")) || [];
+  const [chats, setChats] = useState(initialChats);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     setChats(api.fetchChats());
-  }, []);
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem("conversations", JSON.stringify(chats));
+  }, [chats]);
 
   const addNewChatHandler = (users, message) => {
     const copiedChats = [...chats];
@@ -65,7 +70,7 @@ export default function App() {
     setTimeout(() => {
       const copiedChats = [...chats];
       const currentChat = copiedChats.find(c => c.id === chat.id);
-      // make the 2nd person recieving the message respond (i.e not the current user)
+      // make the 2nd person recieving the message respond (i.e not the current)
       const newMessage = { id: nanoid(), text: "Hey What's up!!", sentAt: faker.time.recent(), sentBy: currentChat.recipients[1] };
       currentChat.messages.push(newMessage);
       setChats(copiedChats);
