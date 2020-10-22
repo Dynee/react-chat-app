@@ -1,5 +1,4 @@
-Project for veho engineering
+the frontend for a chat app made in react
 
 npm install && npm start
 
-made a Refactor branch because I wasn't happy with the first submission
